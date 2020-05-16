@@ -18,10 +18,13 @@ Route::namespace('\\App\\Modules\\User\\Infrastructure\\Controller\\')->group(fu
     Route::post('/verify', 'Api@verify');
 });
 
-// Ususal routes authed
+// Usual routes authed
 Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function () {
     Route::namespace('Event\\Infrastructure\\Controller')->group(function () {
         Route::get('eventSummary', 'Api@eventSummary');
         Route::resource('event', 'Api');
+    });
+    Route::namespace('Game\\Node\\Infrastructure\\Controller')->group(function () {
+        Route::resource('node', 'Api');
     });
 });

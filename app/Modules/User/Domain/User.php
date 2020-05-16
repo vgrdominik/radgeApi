@@ -58,6 +58,21 @@ class User extends Authenticatable implements BaseDomainInterface, DescriptiveIn
         return $this->hasMany('App\Modules\Event\Domain\Event', 'destinator_id');
     }
 
+    public function ownNodes()
+    {
+        return $this->hasMany('App\Modules\Game\Node\Domain\Node', 'creator_id');
+    }
+
+    public function ownPlanes()
+    {
+        return $this->hasMany('App\Modules\Game\Plane\Domain\Plane', 'creator_id');
+    }
+
+    public function ownProfiles()
+    {
+        return $this->hasMany('App\Modules\Game\Profile\Domain\Profile', 'creator_id');
+    }
+
     // GETTERS
 
     public function getValidationContext(): array
