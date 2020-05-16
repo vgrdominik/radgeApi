@@ -27,4 +27,10 @@ Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function
     Route::namespace('Game\\Node\\Infrastructure\\Controller')->group(function () {
         Route::resource('node', 'Api');
     });
+    Route::namespace('Game\\Plane\\Infrastructure\\Controller')->group(function () {
+        Route::resource('plane', 'Api');
+    });
+    Route::namespace('Game\\Profile\\Infrastructure\\Controller')->group(function () {
+        Route::resource('profile', 'Api');
+    });
 });
