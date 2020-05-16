@@ -34,3 +34,8 @@ Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function
         Route::resource('profile', 'Api');
     });
 });
+
+// Public game routes
+Route::namespace('\\App\\Modules\\Game\\')->group(function () {
+    Route::get('material', 'Node\\Infrastructure\\Controller\\Api@nodeSummary');
+});
