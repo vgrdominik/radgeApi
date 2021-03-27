@@ -106,6 +106,8 @@ Se puede realizar un pull request si se desea contribuir en el proyecto. Aún no
 
 Se puede disponer del código y comentar en iam@valentigamez.com. Lo que consideres serà muy agradecido.
 
+La blockchain se inició apartir del proyecto https://github.com/mateuschmitz/blockchain-php/tree/master/src aunque no está incluido en el repositorio.
+
 ## Vulnerabilidades de seguridad
 
 Si se descubre algún fallo de seguridad se puede enviar a iam@valintigamez.com con el asunto "Vulnerabilidad radgeApi". Valentí Gàmez, el líder del proyecto se compromete a responder y tratar cualquier situación constructiva.

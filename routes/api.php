@@ -39,3 +39,8 @@ Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function
 Route::namespace('\\App\\Modules\\Game\\')->group(function () {
     Route::get('material', 'Node\\Infrastructure\\Controller\\Api@nodeSummary');
 });
+
+// Public test routes
+Route::namespace('\\App\\Modules\\Blockchain\\')->group(function () {
+    Route::get('test', 'Block\\Infrastructure\\Controller\\Api@test');
+});
