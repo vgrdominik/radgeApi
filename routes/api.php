@@ -27,20 +27,21 @@ Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function
     Route::namespace('Game\\Node\\Infrastructure\\Controller')->group(function () {
         Route::resource('node', 'Api');
     });
+    Route::namespace('Game\\Blueprint\\Infrastructure\\Controller')->group(function () {
+        Route::resource('blueprint', 'Api');
+    });
     Route::namespace('Game\\Plane\\Infrastructure\\Controller')->group(function () {
         Route::resource('plane', 'Api');
     });
     Route::namespace('Game\\Profile\\Infrastructure\\Controller')->group(function () {
         Route::resource('profile', 'Api');
     });
+    Route::namespace('Blockchain\\Wallet\\Infrastructure\\Controller')->group(function () {
+        Route::post('wallet/transferZen', 'Api@transferZen');
+    });
 });
 
 // Public game routes
 Route::namespace('\\App\\Modules\\Game\\')->group(function () {
     Route::get('material', 'Node\\Infrastructure\\Controller\\Api@nodeSummary');
-});
-
-// Public test routes
-Route::namespace('\\App\\Modules\\Blockchain\\')->group(function () {
-    Route::get('test', 'Block\\Infrastructure\\Controller\\Api@test');
 });

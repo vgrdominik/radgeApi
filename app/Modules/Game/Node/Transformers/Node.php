@@ -3,6 +3,7 @@
 namespace App\Modules\Game\Node\Transformers;
 
 use App\Modules\Base\Transformers\BaseTransformer;
+use App\Modules\Game\Blueprint\Transformers\Blueprint;
 use App\Modules\Game\Node\Domain\Node as NodeModel;
 
 class Node extends BaseTransformer
@@ -26,7 +27,8 @@ class Node extends BaseTransformer
             $this->merge(parent::toArray($request)),
             'details' => $this->details,
             'creator' => new BaseTransformer($this->creator),
-            'scene' => $this->scene,
+            'blueprint' => new Blueprint($this->blueprint),
+            'blueprint_id' => $this->blueprint_id,
             'translation_x' => $this->translation_x,
             'translation_y' => $this->translation_y,
             'translation_z' => $this->translation_z,

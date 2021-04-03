@@ -4,6 +4,7 @@
 namespace App\Modules\User\Infrastructure\Controller;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Blockchain\Wallet\Domain\Wallet;
 use App\Modules\User\Domain\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\PasswordReset;
@@ -71,6 +72,11 @@ class Api extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ])));
+
+        $wallet = new Wallet();
+        $wallet->user_id = $user->id;
+        $wallet->balance = 0;
+        $wallet->save();
 
         return response()->json('User registered');
     }

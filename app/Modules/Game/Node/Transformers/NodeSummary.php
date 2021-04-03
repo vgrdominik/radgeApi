@@ -24,7 +24,7 @@ class NodeSummary extends BaseTransformer
     {
         return [
             'id' => $this->id,
-            'scn' => $this->scene,
+            'scn' => $this->blueprint->scene,
             't_x' => $this->translation_x,
             't_y' => $this->translation_y,
             't_z' => $this->translation_z,

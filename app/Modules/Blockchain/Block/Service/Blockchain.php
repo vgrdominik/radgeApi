@@ -104,7 +104,7 @@ class Blockchain
         $creationDate = new Carbon($lastBlockColumns[1]);
         $previousHash = $lastBlockColumns[2];
         $blockHash = $lastBlockColumns[3];
-        $data = $lastBlockColumns[5];
+        $data = stripslashes($lastBlockColumns[5]);
 
         $lastBlock = new Block($data, $creationDate);
         $lastBlock->setPreviousHash($previousHash);

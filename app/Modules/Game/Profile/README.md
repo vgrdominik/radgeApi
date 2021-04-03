@@ -1,4 +1,4 @@
-# Plane module
+# Profile module
 
 ## Dependencies
 
