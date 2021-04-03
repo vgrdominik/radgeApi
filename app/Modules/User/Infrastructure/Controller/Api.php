@@ -202,4 +202,14 @@ class Api extends Controller
 
         return response()->json('Verified');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function index()
+    {
+        return response()->json(\App\Modules\User\Transformers\User::collection(User::orderBy('name', 'desc')->get()));
+    }
 }

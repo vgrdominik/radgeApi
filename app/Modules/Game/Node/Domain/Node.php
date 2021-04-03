@@ -8,6 +8,7 @@ class Node extends BaseDomain
     const VALIDATION_COTNEXT = [
         'creator_id' => ['required', 'integer', 'exists:users,id'],
         'blueprint_id' => ['required', 'integer', 'exists:blueprints,id'],
+        'owner_id' => ['required', 'integer', 'exists:users,id'],
         'description' => ['required', 'string', 'min:4', 'max:255'],
         'details' => ['required', 'string', 'min:8', 'max:2000'],
         'translation_x' => ['required', 'numeric', 'between:-10000000.999,10000000.999'],
@@ -35,6 +36,7 @@ class Node extends BaseDomain
         'scale_z',
         'creator_id',
         'blueprint_id',
+        'owner_id',
     ];
 
     /**
@@ -49,6 +51,11 @@ class Node extends BaseDomain
     public function creator()
     {
         return $this->belongsTo('App\Modules\User\Domain\User', 'creator_id');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo('App\Modules\User\Domain\User', 'owner_id');
     }
 
     public function blueprint()

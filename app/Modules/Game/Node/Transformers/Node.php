@@ -29,6 +29,8 @@ class Node extends BaseTransformer
             'creator' => new BaseTransformer($this->creator),
             'blueprint' => new Blueprint($this->blueprint),
             'blueprint_id' => $this->blueprint_id,
+            'owner' => new BaseTransformer($this->owner),
+            'owner_id' => $this->owner_id,
             'translation_x' => $this->translation_x,
             'translation_y' => $this->translation_y,
             'translation_z' => $this->translation_z,

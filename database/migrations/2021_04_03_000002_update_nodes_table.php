@@ -27,7 +27,8 @@ class UpdateNodesTable extends Migration
     public function down()
     {
         Schema::table('nodes', function (Blueprint $table) {
-            $table->dropColumn(['destinator_id']);
+            $table->dropColumn(['blueprint_id']);
+            $table->string('scene');
         });
     }
 }

@@ -26,7 +26,11 @@ class Blueprint extends BaseTransformer
             $this->merge(parent::toArray($request)),
             'details' => $this->details,
             'creator' => new BaseTransformer($this->creator),
+            'creator_id' => $this->creator->id,
+            'owner' => new BaseTransformer($this->owner),
+            'owner_id' => $this->owner->id,
             'scene' => $this->scene,
+            'code' => $this->code,
         ];
     }
 }

@@ -78,6 +78,11 @@ class User extends Authenticatable implements BaseDomainInterface, DescriptiveIn
         return $this->hasMany('App\Modules\Blockchain\Wallet\Domain\Wallet', 'user_id');
     }
 
+    public function ownBlueprints()
+    {
+        return $this->hasMany('App\Modules\Game\Blueprint\Domain\Blueprint', 'creator_id');
+    }
+
     // GETTERS
 
     public function getValidationContext(): array

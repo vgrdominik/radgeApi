@@ -7,7 +7,9 @@ class Blueprint extends BaseDomain
 {
     const VALIDATION_COTNEXT = [
         'creator_id' => ['required', 'integer', 'exists:users,id'],
+        'owner_id' => ['required', 'integer', 'exists:users,id'],
         'description' => ['required', 'string', 'min:4', 'max:255'],
+        'code' => ['nullable', 'string', 'min:8', 'max:25'],
         'details' => ['required', 'string', 'min:8', 'max:2000'],
         'scene' => ['required', 'string', 'min:4', 'max:255'],
     ];
@@ -15,8 +17,10 @@ class Blueprint extends BaseDomain
     protected $fillable = [
         'description',
         'details',
+        'code',
         'scene',
-        'creator_id'
+        'creator_id',
+        'owner_id',
     ];
 
     /**
@@ -31,6 +35,11 @@ class Blueprint extends BaseDomain
     public function creator()
     {
         return $this->belongsTo('App\Modules\User\Domain\User', 'creator_id');
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo('App\Modules\User\Domain\User', 'owner_id');
     }
 
     public function insideProfiles()

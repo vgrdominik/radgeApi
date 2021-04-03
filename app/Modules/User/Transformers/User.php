@@ -29,6 +29,7 @@ class User extends BaseTransformer
             'own_events' => Event::collection($this->ownEvents),
             'assigned_events' => Event::collection($this->assignedEvents),
             'email' => $this->email,
+            'name' => $this->name,
         ];
     }
 }

@@ -20,6 +20,9 @@ Route::namespace('\\App\\Modules\\User\\Infrastructure\\Controller\\')->group(fu
 
 // Usual routes authed
 Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function () {
+    Route::namespace('User\\Infrastructure\\Controller')->group(function () {
+        Route::get('listUsers', 'Api@index');
+    });
     Route::namespace('Event\\Infrastructure\\Controller')->group(function () {
         Route::get('eventSummary', 'Api@eventSummary');
         Route::resource('event', 'Api');
@@ -29,6 +32,8 @@ Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function
     });
     Route::namespace('Game\\Blueprint\\Infrastructure\\Controller')->group(function () {
         Route::resource('blueprint', 'Api');
+        Route::post('addBlueprintToCraftUser', 'Api@addBlueprintToCraftUser');
+        Route::get('getBlueprintToCraftUser', 'Api@getBlueprintToCraftUser');
     });
     Route::namespace('Game\\Plane\\Infrastructure\\Controller')->group(function () {
         Route::resource('plane', 'Api');
@@ -38,10 +43,14 @@ Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function
     });
     Route::namespace('Blockchain\\Wallet\\Infrastructure\\Controller')->group(function () {
         Route::post('wallet/transferZen', 'Api@transferZen');
+        Route::get('wallet/show', 'Api@show');
     });
 });
 
 // Public game routes
 Route::namespace('\\App\\Modules\\Game\\')->group(function () {
     Route::get('material', 'Node\\Infrastructure\\Controller\\Api@nodeSummary');
+});
+Route::namespace('\\App\\Modules\\Blockchain\\')->group(function () {
+    Route::get('sorteo', 'Wallet\\Infrastructure\\Controller\\Api@sorteo');
 });
