@@ -66,16 +66,17 @@ class Api
     public function sorteo()
     {
         $gente = array(
-            'Hater',
-            'alvaro',
-            'oultimocoder',
-            'michi',
-            'Xose',
-            'Ury',
-            'Sansa',
+            'Jarto',
+            'Dominguero',
+            'Talaverinho',
+            'Edu',
+            'ElEdu',
+            'Xunisan',
+            'ki',
+            'samu',
         );
 
-        $ganador = rand(0, 6);
+        $ganador = rand(0, 7);
 
         return response()->json($gente[$ganador]);
     }

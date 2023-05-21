@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Agustind\Ethsignature;
 
 class Api extends Controller
 {
@@ -211,5 +212,30 @@ class Api extends Controller
     public function index()
     {
         return response()->json(\App\Modules\User\Transformers\User::collection(User::orderBy('name', 'desc')->get()));
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function linkWallet(Request $request)
+    {
+        $data = $request->validate(['address' => 'required|string', 'signature' => 'required|string']);
+        /** @var User $user */
+        $user = auth()->user();
+
+        $signature = new Ethsignature();
+
+        $is_valid = $signature->verify('Bienvenid@ a Radge!', $data['signature'], $data['address']);
+
+        $addressSaved = false;
+        if ($is_valid) {
+            $user->eth_wallet = $data['address'];
+            $addressSaved = $user->save();
+        }
+
+        return $addressSaved
+            ? response()->json('Wallet vinculada')
+            : response()->json('Error al verificar el mensaje', 500);
     }
 }

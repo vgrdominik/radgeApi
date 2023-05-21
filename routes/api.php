@@ -22,6 +22,7 @@ Route::namespace('\\App\\Modules\\User\\Infrastructure\\Controller\\')->group(fu
 Route::namespace('\\App\\Modules\\')->middleware('auth:airlock')->group(function () {
     Route::namespace('User\\Infrastructure\\Controller')->group(function () {
         Route::get('listUsers', 'Api@index');
+        Route::post('linkWallet', 'Api@linkWallet');
     });
     Route::namespace('Event\\Infrastructure\\Controller')->group(function () {
         Route::get('eventSummary', 'Api@eventSummary');
